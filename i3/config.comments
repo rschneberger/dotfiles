@@ -1,0 +1,5 @@
+#Please see http://i3wm.org/docs/userguide.html for a complete reference!
+
+# set default desktop layout (default is tiling)
+# workspace_layout tabbed <stacking|tabbed
+
