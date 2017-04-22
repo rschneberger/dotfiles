@@ -22,8 +22,7 @@
 # ubuntu orange #F37320
 # vertex dark   #2C6FF0
 #######################
-set $color1 #F37320
-set $color2 #2C6FF0
+set $color1 #1793D1 
 
 
 # Set mod key (Mod1=<Alt>, Mod4=<Winkey>)
@@ -39,7 +38,7 @@ hide_edge_borders both
 # change borders
 bindsym $mod+u border none
 bindsym $mod+y border pixel 1
-bindsym $mod+n border normal
+bindsym $mod+n border normal 
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -55,12 +54,11 @@ bindsym $mod+Return exec urxvt
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id dmenu_recency
-
+bindsym $mod+d exec rofi -show run -font "Inconsolata for Powerline 16" -width -75 -location 0 -lines 5 -padding 20T -separator-style dash -hide-scrollbar -bw 4 -terminal urxvt 
 # launch categorized menu
 bindsym $mod+shift+F12 exec --no-startup-id morc_menu
 
-################################################################################################
+###############################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
 ################################################################################################
 
@@ -72,7 +70,7 @@ bindsym $mod+Ctrl+m exec pavucontrol
 
 ################################################################################################
 
-# Start Applications
+# Hotkeys for Apps
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 bindsym $mod+F2 exec chromium
 bindsym $mod+F3 exec pcmanfm
@@ -83,8 +81,8 @@ bindsym $mod+F5 exec terminal -e 'mocp'
 bindsym $mod+t exec --no-startup-id pkill compton
 bindsym $mod+Ctrl+t exec --no-startup-id compton -b
 bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
-bindsym Print exec scrot -e 'mv $f ~/Screenshots' && sleep 1 && exec notify-send 'screenshot has been saved in ~/Screenshots'
-bindsym $mod+Print exec scrot -ue 'mv $f ~/Screenshots' && sleep 1 && exec notify-send 'screenshot has been saved in ~/Screenshots'
+bindsym Print exec scrot -e 'mv $f ~/Screenshots/' && sleep 1 && exec notify-send 'screenshot has been saved in ~/Screenshots/'
+bindsym $mod+Print exec scrot -ue 'mv $f ~/Screenshots/' && sleep 1 && exec notify-send 'screenshot has been saved in ~/Screenshots/'
 bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
 bindsym $mod+Shift+Print exec notify-send 'selection will be saved in ~/Screenshots' & exec scrot -se 'mv $f ~/Screenshots' && sleep 1 && exec notify-send 'screenshot has been saved in ~/Screenshots'
 bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
@@ -140,7 +138,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+#bindsym $mod+space focus mode_toggle
 
 # toggle sticky
 bindsym $mod+Shift+s sticky toggle
@@ -163,12 +161,15 @@ bindsym $mod+Ctrl+Left workspace prev
 # Workspace Appearance
 ###########################################################################################################
 
-set $ws1 1:  
-set $ws2 2: 
-set $ws3 3: 
-set $ws4 4: 
-set $ws5 5: 
-set $ws6 6:>_ 
+set $ws1 1:  | 
+set $ws2 2:  | 
+set $ws3 3:  | 
+set $ws4 4:  | 
+set $ws5 5:  | 
+set $ws6 6: 
+set $ws7 7: 
+set $ws8 8: 
+set $ws9 9: 
 
 ###########################################################################################################
 # Workspace Controls
@@ -181,9 +182,9 @@ bindsym $mod+3 workspace $ws3
 bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace $ws5
 bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
 
 # Move focused container to workspace
 bindsym $mod+Ctrl+1 move container to workspace $ws1
@@ -192,10 +193,9 @@ bindsym $mod+Ctrl+3 move container to workspace $ws3
 bindsym $mod+Ctrl+4 move container to workspace $ws4
 bindsym $mod+Ctrl+5 move container to workspace $ws5
 bindsym $mod+Ctrl+6 move container to workspace $ws6
-bindsym $mod+Ctrl+7 move container to workspace 7
-bindsym $mod+Ctrl+8 move container to workspace 8
-bindsym $mod+Ctrl+9 move container to workspace 9
-bindsym $mod+Ctrl+0 move container to workspace 0
+bindsym $mod+Ctrl+7 move container to workspace $ws7
+bindsym $mod+Ctrl+8 move container to workspace $ws8
+bindsym $mod+Ctrl+9 move container to workspace $ws9
 
 # Move to workspace with focused container
 bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
@@ -204,10 +204,9 @@ bindsym $mod+Shift+3 move container to workspace $ws3; workspace $ws3
 bindsym $mod+Shift+4 move container to workspace $ws4; workspace $ws4
 bindsym $mod+Shift+5 move container to workspace $ws5; workspace $ws5
 bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
-bindsym $mod+Shift+7 move container to workspace 7; workspace 7
-bindsym $mod+Shift+8 move container to workspace 8; workspace 8
-bindsym $mod+Shift+9 move container to workspace 9; workspace 9
-bindsym $mod+Shift+0 move container to workspace 0; workspace 0
+bindsym $mod+Shift+7 move container to workspace $ws7; workspace 7
+bindsym $mod+Shift+8 move container to workspace $ws8; workspace 8
+bindsym $mod+Shift+9 move container to workspace $ws9; workspace 9
 
 # Open applications on specific workspaces
 # assign [class="Thunderbird"] $ws1
@@ -315,6 +314,7 @@ bindsym $mod+x exec --no-startup-id blurlock
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
+#exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 #exec --no-startup-id chromium
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
@@ -330,17 +330,13 @@ exec_always --no-startup-id fix_xcursor
 ###########################################################################################################
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
-bar {
-	font pango:Inconsolata 08
+bar { 
+        font pango:Inconsolata for Powerline 08
 	position bottom
 	tray_output none
-	status_command ~/bumblebee-status/bumblebee-status -m disk:root cpu memory date time pasink -p root.path=/ time.format="%H:%M" date.format="%a, %b %d %Y" -t gruvbox-powerline
+	
+        status_command ~/bumblebee-status/bumblebee-status -m cpu memory date time pasink -p root.path=/ time.format="%H:%M" date.format="%a, %b %d %Y" -t gruvbox-powerline
 }
-
-# Theme colors    border  backgr. text
-client.focused   $color1 $color1 #000000 #FFFFFF
-client.unfocused #222222 #$color1 #FFFFFF #222222
-client.urgent    #274D01 #900000 #FFFFFF #900000
 
 # hide/unhide i3status bar
 bindsym $mod+m bar mode toggle
